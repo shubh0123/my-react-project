@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import Expenses from "./components/Expenses";
+import NewForm from "./components/NewForm";
+import {useState} from "react";
+let DummyItem=[
+  {
+    "title":"car",
+    "date":new Date(2021,2,28),
+    "cost":123
+  },
+  {
+    "title":"car",
+    "date":new Date(2020,1,28),
+    "cost":147
+  },
+  {
+    "title":"car",
+    "date":new Date(2019,2,28),
+    "cost":345
+  },
+]
+function App(){
+ 
+  const [expenses,setNewExpenses]= useState(DummyItem);
+    const getFormData=(enteredExpenesData)=>{
+      console.log(enteredExpenesData);
+        setNewExpenses((prevExpenses)=>{
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+          return [enteredExpenesData,...prevExpenses]
+        });
+    }
+   
+
+
+
+  return(
+  <div >
+ 
+    <NewForm onSubmitHandler={getFormData}></NewForm>
+      <Expenses item={expenses}></Expenses>
+  </div>
   );
 }
 
