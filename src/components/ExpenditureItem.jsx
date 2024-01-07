@@ -21,7 +21,7 @@ export default function ExpenditureItem(props){
             <h2>{title}</h2>
             <div className='expense-item__price'>${props.cost}</div>
             </div>
-            <button onClick ={clickHandler}>Change State</button>
+            {/* <button onClick ={clickHandler}>Change State</button> */}
         </Card>
     );
 }
